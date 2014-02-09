@@ -2,27 +2,26 @@ package fr.zak.smash.sockets.client;
 
 import java.io.PrintWriter;
 
+import fr.zak.smash.Joueur;
+
 public class Emission implements Runnable{
 
 	private PrintWriter out = null;
-	int direction;
-	float x, y;
+	Joueur j;
 	
-	public Emission(PrintWriter pw, int dire, float x, float y){
+	public Emission(PrintWriter pw, Joueur j){
 		this.out = pw;
-		this.direction = dire;
-		this.x = x;
-		this.y = y;
+		this.j = j;
 	}
 	
 	@Override
 	public void run() {
 		while(true){
-			out.println(direction);
+			out.println(j.getDirection());
 			out.flush();
-			out.println(x);
+			out.println(j.getX());
 			out.flush();
-			out.println(y);
+			out.println(j.getY());
 			out.flush();
 		}
 		

@@ -4,7 +4,10 @@ import org.lwjgl.opengl.GL11;
 
 public class JoueurMP {
 	
-	public void gen(int direction, float x, float y){
+	int direction = 0;
+	float x, y;
+	
+	public void gen(){
 		GL11.glColor3f(1F, 0F, 0f);
 		GL11.glBegin(GL11.GL_QUADS);
 		if(direction == 1){
@@ -27,6 +30,18 @@ public class JoueurMP {
 		GL11.glVertex2f(x + 15, y + 15 + 20);
 		GL11.glVertex2f(x + 15, y + 20);
 		GL11.glEnd();
+	}
+	
+	public void setX(float x){
+		this.x = x;
+	}
+	
+	public void setY(float y){
+		this.y = y;
+	}
+	
+	public void setDirection(int direction){
+		this.direction = direction;
 	}
 	
 }

@@ -9,13 +9,12 @@ public class ThreadClient implements Runnable{
 
 	public static Socket socket = null;
 	public static Thread t1;
-	int direction;
-	float x, y;
+	Joueur j;
+	JoueurMP jmp;
 	
-	public ThreadClient(int dire, float x, float y){
-		this.direction = dire;
-		this.x = x;
-		this.y = y;
+	public ThreadClient(Joueur j, JoueurMP jmp){
+		this.j = j;
+		this.jmp = jmp;
 	}
 	
 	@Override
@@ -24,7 +23,7 @@ public class ThreadClient implements Runnable{
 		try {
 			socket = new Socket("127.0.0.1", 666);
 			
-			t1 = new Thread(new Connexion(socket, direction, x, y));
+			t1 = new Thread(new Connexion(socket, j, jmp));
 			t1.start();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

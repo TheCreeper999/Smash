@@ -47,11 +47,12 @@ public class Launch {
 		getDelta(); // call once before loop to initialise lastFrame
 		lastFPS = getTime(); // call before loop to initialise fps timer
  
+		new Thread(new ThreadClient(j, jmp)).start();
+		
 		while (!Display.isCloseRequested()) {
 			int delta = getDelta();
  
 			update(delta);
-//			new Thread(new ThreadClient(j.getDirection(), j.getX(), j.getY())).start();
 			renderGL();
  
 			Display.update();
@@ -163,7 +164,7 @@ public class Launch {
 			tirs.gen();
 			GL11.glEnd();
 			j.gen(tirs.getDirection());
-			jmp.gen(Reception.direction, Reception.x, Reception.y);
+			jmp.gen();
 		}
 		if(!game){
 			if(!button1){
